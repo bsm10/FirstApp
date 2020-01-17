@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, FlatList, ActivityIndicator } from 'react-native'
+import { View, StyleSheet, FlatList, ScrollView, ActivityIndicator } from 'react-native'
 import { ImageCard } from '../FirstApp/components/ImageCard'
 // import { Card, ListItem, Button, Icon } from 'react-native-elements'
 
@@ -53,23 +53,30 @@ export default class App extends Component {
       )
     }
     return (
-        <View>
-        <FlatList style = { styles.flexList }
-                data= {this.state.data}
-                renderItem={({item}) => <ImageCard data = {item} />}
-                keyExtractor={({id}, index) => id}
-              />
-        </View>
+      <ScrollView>
+      <View style = { styles.container }>
+        {this.state.data.map(item => (
+          <ImageCard data={item} key={item.id} />
+        ))}
+      </View>
+    </ScrollView>
+        // <View>
+        // <FlatList style = { styles.flexList }
+        //         data= {this.state.data}
+        //         renderItem={({item}) => <ImageCard data = {item} />}
+        //         keyExtractor={({id}, index) => id}
+        //       />
+        // </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  flexList: {
+  container: {
     flexDirection: "row",
     flexWrap: "wrap",
     //numColumns: 2,
     flexShrink: 2,
-    //justifyContent: "space-around"
+    justifyContent: "space-around"
     }
   })
