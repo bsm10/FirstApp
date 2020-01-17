@@ -70,6 +70,6 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     //numColumns: 2,
     flexShrink: 2,
-    justifyContent: "space-around"
+    //justifyContent: "space-around"
     }
   })
