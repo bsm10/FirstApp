@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, FlatList, ScrollView, ActivityIndicator } from 'react-native'
+import { View, Image, StyleSheet, Text, FlatList, ScrollView, ActivityIndicator, TouchableOpacity } from 'react-native'
 import { ImageCard } from '../FirstApp/components/ImageCard'
-// import { Card, ListItem, Button, Icon } from 'react-native-elements'
-
+import { w, h } from '../FirstApp/components/constants'
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
-
-//export default class App extends Component {
 class HomeScreen extends Component {
   state = {
     data: [],
@@ -15,7 +12,7 @@ class HomeScreen extends Component {
   }
 
   static navigationOptions = {
-    title: 'New Photos',
+    title: `New Photos ${new Date().getDate()}.${new Date().getMonth()+1}.${new Date().getFullYear()}`,
   };
 
   componentDidMount = async () => {
@@ -33,28 +30,23 @@ class HomeScreen extends Component {
   //   return fetch(url)
   //     .then((response) => response.json())
   //     .then((responseJson) => {
-
   //       this.setState({
   //         isLoading: false,
   //         data: responseJson,
   //       }, function(){
-
   //       });
-
   //     })
   //     .catch((error) =>{
   //       console.error(error);
   //     });
   // }
 
-  
-
   render () {
     const {navigate} = this.props.navigation;
     console.log ('state', this.state)
     if(this.state.isLoading){
       return(
-        <View style={{flex: 1, alignItems: "center"}}>
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
           <ActivityIndicator/>
         </View>
       )
@@ -63,11 +55,16 @@ class HomeScreen extends Component {
       <ScrollView>
       <View style = { styles.container }>
         {this.state.data.map(item => (
-          //<ImageCard data={item} key={item.id}/>
-          <ImageCard data={item} key={item.id} onPress={() => navigate('Details', {id: item.id})}/>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('Details', {
+            img: item.urls.regular,
+            })} 
+            key={item.id}>
+              <ImageCard data={item} key={item.id}/>
+          </TouchableOpacity>
         ))}
       </View>
     </ScrollView>
+        
         // <View>
         // <FlatList style = { styles.flexList }
         //         data= {this.state.data}
@@ -75,14 +72,20 @@ class HomeScreen extends Component {
         //         keyExtractor={({id}, index) => id}
         //       />
         // </View>
+
     )
   }
+
 }
+
 class DetailsScreen extends Component {
   render() {
+    const img = this.props.navigation.getParam('img', 'NO-ID')
+    console.log ('param', img)
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Details Screen</Text>
+      <View>
+        {/* <Image style={ styles.imageFull } source={{ uri: this.props.navigation.getParam('img', 'NO-ID')}}/> */}
+        <Image style={ styles.imageFull } source={{ uri: img}}/>
       </View>
     );
   }
@@ -112,8 +115,13 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     flexWrap: "wrap",
-    //numColumns: 2,
     flexShrink: 2,
     justifyContent: "space-around"
-    }
+    },
+  imageFull: {
+    width: w,
+    height: h,
+    resizeMode: 'stretch',
+    //resizeMode: 'cover',
+  }
   })

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, View, Text, StyleSheet } from 'react-native'
+import { Image, View, Text, StyleSheet, Button } from 'react-native'
 import { w } from './constants'
 
 const styles = StyleSheet.create({
@@ -42,13 +42,12 @@ const ImageCard = ({ data }) => {
   const { container, sub, h1, h2, cover } = styles
   //const { id, description } = data
   return (
-    <View style={container}>
+    <View style={container} >
     <View style={sub}>
-      <Image style={cover} source={{ uri: data.urls.small }} />
+      <Image style={cover} source={{ uri: data.urls.thumb }}/>
     </View>
     <Text style={h1}>Description: "{data.description}"</Text>
     <Text style={h2}>Author: {data.user.name}</Text> 
-    
   </View>
   )
 }
