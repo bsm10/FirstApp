@@ -3,14 +3,30 @@ import { View, StyleSheet, FlatList, ScrollView, ActivityIndicator } from 'react
 import { ImageCard } from '../FirstApp/components/ImageCard'
 // import { Card, ListItem, Button, Icon } from 'react-native-elements'
 
+// import {createAppContainer} from 'react-navigation';
+// import {createStackNavigator} from 'react-navigation-stack';
+
+// const MainNavigator = createStackNavigator({
+//   Home: {screen: HomeScreen},
+//   Details: {screen: DetailsScreen},
+// });
+
 const url = 'https://api.unsplash.com/photos/?client_id=cf49c08b444ff4cb9e4d126b7e9f7513ba1ee58de7906e4360afc1a33d1bf4c0'
 
+// const App = createAppContainer(MainNavigator);
+
+// export default App;
 
 export default class App extends Component {
+// class HomeScreen extends React.Component {
   state = {
     data: [],
     isLoading: true
   }
+
+  // static navigationOptions = {
+  //   title: 'New Photos',
+  // };
 
   componentDidMount = async () => {
     try {
@@ -41,10 +57,11 @@ export default class App extends Component {
   //     });
   // }
 
+  
 
   render () {
+    // const {navigate} = this.props.navigation;
     console.log ('state', this.state)
-    // const { container } = styles
     if(this.state.isLoading){
       return(
         <View style={{flex: 1, alignItems: "center"}}>
@@ -56,7 +73,8 @@ export default class App extends Component {
       <ScrollView>
       <View style = { styles.container }>
         {this.state.data.map(item => (
-          <ImageCard data={item} key={item.id} />
+          <ImageCard data={item} key={item.id}/>
+          //<ImageCard data={item} key={item.id} onPress={() => navigate('Details', {id: item.id})}/>
         ))}
       </View>
     </ScrollView>

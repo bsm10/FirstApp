@@ -13,13 +13,6 @@
             "platform": "android"
         },
         {
-            "name": "Debug Windows",
-            "cwd": "${workspaceFolder}",
-            "type": "reactnative",
-            "request": "launch",
-            "platform": "windows"
-        },
-        {
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",

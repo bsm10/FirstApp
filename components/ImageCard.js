@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
 
 const ImageCard = ({ data }) => {
   const { container, sub, h1, h2, cover } = styles
-  const { id, description } = data
+  //const { id, description } = data
   return (
     <View style={container}>
     <View style={sub}>
