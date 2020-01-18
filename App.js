@@ -38,7 +38,7 @@ class HomeScreen extends Component {
   //     })
   //     .catch((error) =>{
   //       console.error(error);
-  //     });
+  //     }); 
   // }
 
   render () {
@@ -84,7 +84,6 @@ class DetailsScreen extends Component {
     console.log ('param', img)
     return (
       <View>
-        {/* <Image style={ styles.imageFull } source={{ uri: this.props.navigation.getParam('img', 'NO-ID')}}/> */}
         <Image style={ styles.imageFull } source={{ uri: img}}/>
       </View>
     );
