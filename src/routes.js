@@ -1,0 +1,2 @@
+export const PHOTOS_HOME = 'PHOTOS_HOME'
+export const PHOTOS_DETAILS = 'PHOTOS_DETAILS'
