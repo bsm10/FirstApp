@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, StyleSheet, ScrollView, ActivityIndicator, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, ScrollView, ActivityIndicator, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { fetchPhotos } from '../../src/actions'
 import { ImageCard } from '../../components/ImageCard'
