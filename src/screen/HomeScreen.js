@@ -11,7 +11,6 @@ class HomeScreen extends Component {
 
   componentDidMount(){
     this.props.fetchPhotos()
-    //console.log('componentDidMount')
   }
 
   render () {
@@ -41,14 +40,6 @@ class HomeScreen extends Component {
     )
   }
 }
-
-
-// const mapStateToProps = state => ({
-//   //photosList: state.data,
-//   data: state.data,
-//   loading: state.loading,
-//   error: state.error
-// })
 
 function mapStateToProps(state){
   console.log('state', state)
