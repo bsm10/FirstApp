@@ -1,17 +1,18 @@
 import React from 'react';
-import { Provider } from 'react-redux'
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import {Provider} from 'react-redux';
+import {createStore, applyMiddleware, combineReducers} from 'redux';
 import thunk from 'redux-thunk';
-import * as reducers from './src/reducers'
-import Screen from './src/screen'
+import * as reducers from './src/reducers';
+import Screen from './src/screen';
 
-const rootReducer = combineReducers(reducers)
+const rootReducer = combineReducers(reducers);
 const store = createStore(rootReducer, applyMiddleware(thunk));
-
+//console.log('FirstApp starting');
 const App = () => (
-  <Provider store={ store }>
+  
+  <Provider store={store}>
     <Screen />
   </Provider>
-)
+);
 
-export default App
+export default App;
